@@ -77,10 +77,15 @@ WSGI_APPLICATION = 'mosiac.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    
+	'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'd2hcsaopi3aluj',
+            'USER': 'xqhtmiygscscva',
+            'PASSWORD': 'b517a83561416fdaf47d17f0d0edb9f02c2834089724c9a01394588f901eb336',
+            'HOST': 'ec2-54-157-234-29.compute-1.amazonaws.com',
+            'PORT': '5432',
+        }
 }
 
 
