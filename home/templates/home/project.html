@@ -1,0 +1,73 @@
+     {% extends 'home/footer_header.html' %}
+  {% block content %}
+
+		
+		<section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-start mb-5 pb-2">
+          <div class="col-md-4 heading-section ftco-animate">
+          	<span class="subheading subheading-with-line"><small class="pr-2 bg-white">Projects</small></span>
+            <h2 class="mb-4">Featured Projects</h2>
+          </div>
+          <div class="col-md-8 pl-md-5 heading-section ftco-animate">
+          	<div class="pl-md-4 border-line">
+	          	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+	          	<p class="category mt-5">
+	            	<span class="active mr-2"><a href="{% url 'project' %}">All Work</a></span>
+	            	<span class="mr-2"><a href="{% url 'project' 1 %}">Interior</a></span>
+	            	<span class="mr-2"><a href="{% url 'project' 2 %}">Exterior</a></span>
+	            	<span class="mr-2"><a href="{% url 'project' 3 %}">Landscape</a></span>
+	            </p>
+          	</div>
+          </div>
+        </div>
+    	</div>
+    	<div class="container-wrap">
+    		<div class="row no-gutters">
+				{% for p in pro %}
+    			<div class="col-md-6 col-lg-3 ftco-animate">
+    				<div class="project">
+	    				<img src="/media/{{ p.img }}" class="img-fluid" alt="Colorlib Template">
+	    				<div class="text">
+	    					<span>{{p.category.name}}</span>
+	    					<h3><a href="project.html">{{p.about}}</a></h3>
+	    				</div>
+	    				<a href="{{ p.img.url }}" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="icon-expand"></span>
+	    				</a>
+    				</div>
+    			</div>
+    			{% endfor%}
+    		</div>
+
+			<!--	pagination uchun			-->
+    		<div class="row no-gutters mt-5">
+                {% if pro.paginator.num_pages > 1 %}
+          <div class="col text-center">
+            <div class="block-27">
+                <ul>
+                    {% if pro.number == 1 %}
+                        <li class="active"><span><</span></li>
+                    {% else %}
+                        <li><a href="?page=1">&lt;</a></li>
+                    {% endif %}
+                    {% for i in pro.paginator.page_range %}
+                        {% if i == pro.number %}
+                            <li class="active"><span>{{i}}</span></li>
+                        {% else %}
+                            <li><a href="?page={{i}}">{{i}}</a></li>
+                        {%endif%}
+                    {% endfor %}
+                    {% if pro.paginator.num_pages == pro.number %}
+                        <li class="active"><span>></span></li>
+                    {% else %}
+                        <li><a href="?page={{pro.paginator.num_pages}}">&gt;</a></li>
+                    {% endif %}
+              </ul>
+            </div>
+          </div>
+                {% endif %}
+        </div>
+    	</div>
+    </section>
+	{% endblock %}

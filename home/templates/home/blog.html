@@ -1,0 +1,65 @@
+{% extends 'home/footer_header.html' %}
+  {% block content %}
+
+
+		
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row">
+          <div class="col-lg-8">
+          	<div class="row">
+                {% for bl in page_obj %}
+                  <div class="col-md-6 ftco-animate">
+		            <div class="blog-entry">
+		              <a href="{{bl.get_absolute_url}}" class="block-20" style="background-image: url('{{bl.img.url}}');">
+		              </a>
+		              <div class="text d-flex py-4">
+		                <div class="meta mb-3">
+		                  <div><a href="#">{{bl.date}}</a></div>
+		                  <div><a href="#">{{bl.user.fullName}}</a></div>
+		                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> {{bl.comment_set.count}}</a></div>
+		                </div>
+		                <div class="desc pl-3">
+			                <h3 class="heading"><a href="#">{{bl.title}}</a></h3>
+			              </div>
+		              </div>
+		            </div>
+		          </div>
+                {% endfor %}
+
+          	</div>
+
+          	<div class="row no-gutters my-5">
+		         {% if page_obj.paginator.num_pages > 1 %}
+                      <div class="col text-center">
+                        <div class="block-27">
+                            <ul>
+                                {% if page_obj.number == 1 %}
+                                    <li class="active"><span><</span></li>
+                                {% else %}
+                                    <li><a href="?page=1">&lt;</a></li>
+                                {% endif %}
+                                {% for i in page_obj.paginator.page_range %}
+                                    {% if i == page_obj.number %}
+                                        <li class="active"><span>{{i}}</span></li>
+                                    {% else %}
+                                        <li><a href="?page={{i}}">{{i}}</a></li>
+                                    {%endif%}
+                                {% endfor %}
+                                {% if page_obj.paginator.num_pages == page_obj.number %}
+                                    <li class="active"><span>></span></li>
+                                {% else %}
+                                    <li><a href="?page={{page_obj.paginator.num_pages}}">&gt;</a></li>
+                                {% endif %}
+                          </ul>
+                        </div>
+                      </div>
+                 {% endif %}
+		        </div>
+          </div>
+            {% include 'home/sidebarBlog.html' %}
+          <!-- END COL -->
+        </div>
+			</div>
+		</section>
+    {% endblock %}

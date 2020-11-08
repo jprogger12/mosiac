@@ -1,0 +1,47 @@
+<div class="col-lg-4 sidebar ftco-animate">
+<!--           murakkabroq zapros qilishni organib yozib qoyish sharti bilan qoldiraman   -->
+<!--        //////////////////////////////////////////     -->
+            <div class="sidebar-box ftco-animate">
+            	<h3>Category</h3>
+              <ul class="categories">
+                  <li><a href="{% url 'blog' %}">All</a></li>
+                  {% for cat in category%}
+                <li><a href="{% url 'blog-d' cat.id %}">{{cat.name}}<span>({{cat.blogletter_set.count}})</span></a></li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <div class="sidebar-box ftco-animate">
+              <h3>Popular Articles</h3>
+                {% for bl in blog2 %}
+              <div class="block-21 mb-4 d-flex">
+                <a class="blog-img mr-4" style="background-image: url({{bl.img.url}});"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="#">{{bl.title}}</a></h3>
+                  <div class="meta">
+                    <div><a href="#"><span class="icon-calendar"></span> {{bl.date}}</a></div>
+                    <div><a href="#"><span class="icon-person"></span> {{bl.user}}</a></div>
+                    <div><a href="#"><span class="icon-chat"></span> {{bl.comment_set.count}}</a></div>
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+
+            </div>
+<!--    //////////////////////////////////    -->
+
+
+
+<!--            <div class="sidebar-box ftco-animate">-->
+<!--            	<h3>Archives</h3>-->
+<!--              <ul class="categories">-->
+<!--&lt;!&ndash;                  {% for bl in blogl %}&ndash;&gt;-->
+<!--              	<li><a href="#">{{blogl.date}} <span>(30)</span></a></li>-->
+<!--&lt;!&ndash;                  {% endfor %}&ndash;&gt;-->
+<!--&lt;!&ndash;              	<li><a href="#">Novemmber 2018 <span>(20)</span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a href="#">September 2018 <span>(6)</span></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                <li><a href="#">August 2018 <span>(8)</span></a></li>&ndash;&gt;-->
+<!--              </ul>-->
+<!--            </div>-->
+
+</div>

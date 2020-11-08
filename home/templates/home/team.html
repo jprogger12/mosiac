@@ -1,0 +1,73 @@
+  {% extends 'home/footer_header.html' %}
+  {% block content %}
+
+		
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate">
+          	<span class="subheading subheading-with-line"><small class="pr-2 bg-white">Expert Team</small></span>
+            <h2 class="mb-4">Our Architect Team</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+          </div>
+        </div>	
+				<div class="row">
+					{% for person in teamPerson %}
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img" style="background-image: url({{person.img.url}});"></div>
+							<div class="text px-4 pt-4">
+								<h3>{{person.fullName}}</h3>
+								<span class="position mb-2">{{person.profession}}</span>
+								<div class="faded">
+									<p>{{person.about}}</p>
+									<ul class="ftco-social d-flex">
+										{% for contact in teamPC %}
+											{% if contact.personId.id == person.id %}
+												<li class="ftco-animate"><a href="{{contact.url}}"><span class="icon-{{contact.name}}"></span></a></li>
+											{% endif %}
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row justify-content-start mb-5 pb-2">
+          <div class="col-md-4 heading-section ftco-animate">
+          	<span class="subheading subheading-with-line"><small class="pr-2 bg-light">Projects</small></span>
+            <h2 class="mb-4">Recent Projects</h2>
+          </div>
+          <div class="col-md-8 pl-md-5 heading-section ftco-animate">
+          	<div class="pl-md-4 border-line">
+	          	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+          	</div>
+          </div>
+        </div>
+    	</div>
+    	<div class="container">
+    		<div class="row">
+				{% for p in pro %}
+    			<div class="col-md-6 col-lg-3 ftco-animate">
+    				<div class="project">
+	    				<img src="{{ p.img.url }}" class="img-fluid" alt="Colorlib Template">
+	    				<div class="text">
+	    					<span>{{p.category.name}}</span>
+	    					<h3><a href="project.html">{{p.about}}</a></h3>
+	    				</div>
+	    				<a href="/{{ p.img }}" class="icon image-popup d-flex justify-content-center align-items-center">
+	    					<span class="icon-expand"></span>
+	    				</a>
+    				</div>
+    			</div>
+    			{% endfor%}
+			</div>
+    	</div>
+    </section>
+   {% endblock %}
