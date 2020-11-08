@@ -26,7 +26,7 @@ SECRET_KEY = '8l+4%asnpf$3a-_e$4=hsx*_b7d1bdsds#v&h67az$n++tg-xu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mirzoakbar.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
